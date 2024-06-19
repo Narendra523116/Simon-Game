@@ -21,7 +21,9 @@ $(document).on("keypress", function(){
         is_started = true;
         console.log(gamePattern.length + 1)  ;
         $("h1").text("Level "+(gamePattern.length+1));
-        playGame() ;
+        setTimeout(function(){
+            playGame();
+        }, 500);
         
     }
 });
@@ -72,12 +74,14 @@ function animate(color){
     var sound = new Audio("./sounds/"+color+".mp3");
     sound.play();
 
-    var button = $("."+color);
-    button.css("opacity", "0.2");
+    var button = $("#"+color);
+    button.addClass("pressed")
+
+    console.log(button.classList);
 
     setTimeout(function(){
-        button.css("opacity",  "1");
-    }, 90);
+        button.removeClass("pressed");
+    }, 150);
 }
 
 
